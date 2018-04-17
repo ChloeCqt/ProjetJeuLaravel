@@ -9,7 +9,7 @@ class Background extends Model
     protected $table = "background";
 
     public function events(){
-        return $this->hasMany("App\EventBackground", "idBackground");
+        return $this->hasMany("App\Event", "idBackground");
 
     }
 }

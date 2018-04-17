@@ -30,4 +30,10 @@ class ControllerCaquant extends Controller
 
     }
 
+    public function background($idbackground){
+        $idbackground = Background::find($idbackground);
+        return view("background", ["id"=>$idbackground]);
+    }
+
+
 }
