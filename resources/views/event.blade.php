@@ -2,9 +2,8 @@
 
 @section('content')
     <ul>
-        @foreach($event as $e)
-            <li><a href="/event/{{$e->id}}">{{$e->text}}</a></li>
-        @endforeach
+            <li>{{$event->text}}</li>
+
     </ul>
 
 @endsection
