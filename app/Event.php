@@ -12,16 +12,16 @@ class Event extends Model
         return $this->belongsTo("App\Chapter", "idChapter");
     }
 
+    public function Background(){
+        return $this->belongsTo("App\Background", "idBackground");
+    }
+
     public function Character(){
         return $this->hasMany("App\Character", "idEvent");
     }
 
     public function Question(){
         return $this->hasOne("App\Question", "idEvent");
-    }
-
-    public function Background(){
-        return $this->hasOne("App\EventBackground", "idEvent");
     }
 
     public function User(){

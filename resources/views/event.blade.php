@@ -1,9 +1,10 @@
 @extends('layouts.app')
+$background = App\Background::with('event.idBackground')->get();
 
 @section('content')
     <style>
        body{
-           background-image:url('{{$event->Background->Background->url}}');
+           background-image:url('{{$event->Background->url}}');
        }
     </style>
     <div id="dialogue">
