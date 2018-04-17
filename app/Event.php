@@ -21,7 +21,7 @@ class Event extends Model
     }
 
     public function Background(){
-        return $this->hasOne("App\Background", "idEvent");
+        return $this->hasOne("App\EventBackground", "idBackground");
     }
 
     public function User(){

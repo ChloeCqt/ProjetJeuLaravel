@@ -9,7 +9,7 @@ class Background extends Model
     protected $table = "background";
 
     public function BToEvent(){
-        return $this->belongsTo("App\Event", "idEvent");
+        return $this->belongsToMany("App\EventBackground", "idEvent");
 
     }
 }
