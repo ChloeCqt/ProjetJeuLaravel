@@ -4,16 +4,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Jeu</title>
 </head>
 
 <body>
-<h1> Bienvenido </h1>
 <nav>
     <a href="/"> Home page</a>
-    <a href="/event/1"> Evenement </a>
-    <a href="/parametre/2">Parametre
-        <a href="/films">Films</a>
+    <a href="/deconnexion">Déconnexion</a>
 
         <div class="container">
             @yield("content")
