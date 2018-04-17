@@ -1,9 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <ul>
-            <li>{{$event->text}}</li>
+    <div id="dialogue">
+        @if($event->dialog == false)
+ca amrche
+        @else
+            {{$event->dialog}}
+        @endif
+    </div>
+    <div id="texte">
+        {{$event->text}}
+    </div>
 
-    </ul>
+
 
 @endsection
