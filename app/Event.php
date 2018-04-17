@@ -10,7 +10,6 @@ class Event extends Model
 
     public function BToChapter(){
         return $this->belongsTo("App\Chapter", "idChapter");
-
     }
 
     public function Character(){
@@ -18,11 +17,11 @@ class Event extends Model
     }
 
     public function Question(){
-        return $this->hasMany("App\Question", "idEvent");
+        return $this->hasOne("App\Question", "idEvent");
     }
 
     public function Background(){
-        return $this->hasMany("App\Background", "idEvent");
+        return $this->hasOne("App\Background", "idEvent");
     }
 
     public function User(){

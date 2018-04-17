@@ -13,4 +13,12 @@ class ControllerCaquant extends Controller
             return redirect('404');
         return view ('event', ['event' => $e]);
     }
+
+    public function answer($idEvent){
+        $a = Answer::find($a)->where('idEvent',$idEvent);
+        if($f == false)
+            return redirect('404');
+        return view ('film', ['film' => $f]);
+    }
+
 }
