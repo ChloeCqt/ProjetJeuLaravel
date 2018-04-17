@@ -13,7 +13,7 @@ class Question extends Model
 
     }
 
-    public function Answer(){
+    public function answers(){
         return $this->hasMany("App\Answer", "idQuestion");
     }
 }
