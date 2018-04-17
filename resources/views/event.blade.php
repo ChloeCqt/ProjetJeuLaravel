@@ -3,7 +3,7 @@
 @section('content')
     <style>
        body{
-           background-image:url('{{$event->Background->url}}');
+           background-image:url('{{$event->Background->Background->url}}');
        }
     </style>
     <div id="dialogue">

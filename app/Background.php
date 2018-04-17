@@ -8,8 +8,8 @@ class Background extends Model
 {
     protected $table = "background";
 
-    public function BToEvent(){
-        return $this->belongsToMany("App\EventBackground", "idEvent");
+    public function events(){
+        return $this->hasMany("App\EventBackground", "idBackground");
 
     }
 }
