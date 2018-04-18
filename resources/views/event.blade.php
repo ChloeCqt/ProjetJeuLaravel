@@ -7,10 +7,14 @@
        }
     </style>
     <div class="image-perso">
+        @if($event->Character == false)
+
+        @else
         <img src="{{$event->Character->url}}" >
         <span>
             {{$event->Character->name}}
         </span>
+        @endif
     </div>
     <div class="dialogue">
         @if($event->dialog == false)
@@ -31,9 +35,11 @@
     </div>
     <div class="button">
         @foreach($event->answers as $a)
-            <div>
-                <a href="/event/{{$a->idNextEvent}}">{{$a->wording}}</a>
-            </div>
+            <a href="/event/{{$a->idNextEvent}}">
+                <div>
+                    {{$a->wording}}
+                </div>
+            </a>
         @endforeach
     </div>
 
