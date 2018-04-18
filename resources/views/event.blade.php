@@ -6,24 +6,28 @@
            background-image:url('{{$event->Background->url}}');
        }
     </style>
-    <div id="image-perso">
+    <div class="image-perso">
         @foreach($event->characters as $c)
         <img src="{{$c->url}}" >
             @endforeach
     </div>
-    <div id="dialogue">
+    <div class="dialogue">
         @if($event->dialog == false)
 
         @else
            " {{$event->dialog}} "
         @endif
     </div>
-    <div id="texte">
+    <div class="texte">
         {{$event->text}}
     </div>
+    <div class="question">
+        @if($event->question == false)
 
-    {{$event->question}}
-
+        @else
+            {{$event->question}}
+        @endif
+    </div>
     <div class="button">
         @foreach($event->answers as $a)
             <div>
