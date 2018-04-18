@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 18 Avril 2018 à 07:15
+-- Généré le :  Mer 18 Avril 2018 à 08:03
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -175,7 +175,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `idEvent`) VALUES
-(2, 'Chloé', 'chloecaquant@hotmail.com', '$2y$10$WrwhDf1uHtDJLxYeGyc.CejTGrK2lIAsz7GenQafSapfUYpu44CXy', 'bXwgyCqUdYDPwkkscwWPz7CdGWAYXrw8GWJXZvZrEgHWgdl36hV1kBvjAQC9', '2018-04-17 07:33:49', '2018-04-17 07:33:49', NULL);
+(2, 'Chloé', 'chloecaquant@hotmail.com', '$2y$10$WrwhDf1uHtDJLxYeGyc.CejTGrK2lIAsz7GenQafSapfUYpu44CXy', 'bXwgyCqUdYDPwkkscwWPz7CdGWAYXrw8GWJXZvZrEgHWgdl36hV1kBvjAQC9', '2018-04-17 07:33:49', '2018-04-18 05:52:59', 2);
 
 --
 -- Index pour les tables exportées

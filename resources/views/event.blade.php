@@ -6,6 +6,10 @@
            background-image:url('{{$event->Background->url}}');
        }
     </style>
+    <div id="image-perso">
+
+        <img src="smiley.gif" >
+    </div>
     <div id="dialogue">
         @if($event->dialog == false)
 
