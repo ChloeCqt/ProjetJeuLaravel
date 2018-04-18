@@ -1,5 +1,4 @@
 @extends('layouts.app')
-$background = App\Background::with('event.idBackground')->get();
 
 @section('content')
     <style>
@@ -7,6 +6,10 @@ $background = App\Background::with('event.idBackground')->get();
            background-image:url('{{$event->Background->url}}');
        }
     </style>
+    <div id="image-perso">
+
+        <img src="smiley.gif" >
+    </div>
     <div id="dialogue">
         @if($event->dialog == false)
 
@@ -18,10 +21,10 @@ $background = App\Background::with('event.idBackground')->get();
         {{$event->text}}
     </div>
 
-    {{$event->Question->wording}}
+    {{$event->question}}
 
     <div class="button">
-        @foreach($event->Question->answers as $a)
+        @foreach($event->answers as $a)
             <div>
                 <a href="/event/{{$a->idNextEvent}}">{{$a->wording}}</a>
             </div>

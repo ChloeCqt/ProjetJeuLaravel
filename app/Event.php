@@ -20,8 +20,8 @@ class Event extends Model
         return $this->hasMany("App\Character", "idEvent");
     }
 
-    public function Question(){
-        return $this->hasOne("App\Question", "idEvent");
+    public function answers(){
+        return $this->hasMany("App\Answer", "idEvent");
     }
 
     public function User(){
