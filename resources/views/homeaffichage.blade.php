@@ -10,16 +10,17 @@
 
 
     @auth
-        <a href="/event/{{Auth::user()->idEvent}}">Continuer le jeu</a>
-        <a href="/event/1">Recommencer le jeu</a>
-
-
+        <div class="button-game">
+            <a href="/event/{{Auth::user()->idEvent}}">Continuer le jeu</a>
+            <a href="/event/1">Recommencer le jeu</a>
+        </div>
     @endauth
 
     @guest
-
-        <a href="/login">Se connecter pour jouer</a>
-        <a href="/register">Pas encore de compte ? créer un compte</a>
+        <div class="button-login">
+            <a href="/login">Se connecter pour jouer</a>
+            <a href="/register">Pas encore de compte ? créer un compte</a>
+        </div>
     @endguest
 
 </div>

@@ -1,0 +1,15 @@
+//homez
+
+.button-game, .button-login{
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+//event
+
+.image-perso{
+  width: 100%;
+  img{
+    width: 100%;
+  }
+}

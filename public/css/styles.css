@@ -1,0 +1,10 @@
+.button-game, .button-login {
+  display: grid;
+  grid-template-columns: 1fr; }
+
+.image-perso {
+  width: 100%; }
+  .image-perso img {
+    width: 100%; }
+
+/*# sourceMappingURL=styles.css.map */

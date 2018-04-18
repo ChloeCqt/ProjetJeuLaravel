@@ -4,9 +4,9 @@
 C'est la page 404
 
 
-@auth
-    <a href="/event/{{Auth::user()->idEvent}}">Continuer le jeu</a>
-@endauth
+
+    <a href="/homeaffichage">Retournez à l'accueil</a>
+
 
 
 @endsection
