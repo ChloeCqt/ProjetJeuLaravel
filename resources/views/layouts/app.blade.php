@@ -10,7 +10,7 @@
 <body>
 <nav>
     <a href="/"> Home page</a>
-    <a href="/deconnexion">Déconnexion</a>
+    <a href="/logout">Déconnexion</a>
 
         <div class="container">
             @yield("content")

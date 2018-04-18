@@ -7,7 +7,22 @@
     <div class="txt-bienvenue">
         <h2>Bienvenue sur le jeu 3ème droite.</h2>
     </div>
-    <input type="submit">
+
+
+    @auth
+        <form action="#">
+
+    <input type="submit" id="continue" value="Continuer le jeu">
+    <input type="submit" id="restart" value="Recommencer le jeu">
+
+        </form>
+    @endauth
+
+    @guest
+
+        <a href="/login">Se connecter pour jouer</a>
+        <a href="/register">Pas encore de compte ? créer un compte</a>
+    @endguest
 
 </div>
 @endsection
