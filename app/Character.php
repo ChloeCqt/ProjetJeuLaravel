@@ -8,7 +8,7 @@ class Character extends Model
 {
     protected $table = "character";
 
-    public function BToEvent(){
+    public function Event(){
         return $this->belongsTo("App\Event", "idEvent");
 
     }

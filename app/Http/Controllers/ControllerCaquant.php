@@ -19,11 +19,10 @@ class ControllerCaquant extends Controller
     // Condition pour eviter de retourner en arrrière : Auth::user()->event_id
 
         $e = Event::find($e);
-        Auth::user()->idEvent = $e->id;
-        Auth::user()->save();
         if($e == false)
             return redirect('404');
-
+        Auth::user()->idEvent = $e->id;
+        Auth::user()->save();
 
         return view ('event', ['event' => $e]);
 
