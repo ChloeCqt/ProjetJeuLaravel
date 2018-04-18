@@ -7,8 +7,9 @@
        }
     </style>
     <div id="image-perso">
-
-        <img src="smiley.gif" >
+        @foreach($event->characters as $c)
+        <img src="{{$c->url}}" >
+            @endforeach
     </div>
     <div id="dialogue">
         @if($event->dialog == false)
