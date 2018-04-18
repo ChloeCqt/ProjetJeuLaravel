@@ -7,4 +7,12 @@
   .image-perso img {
     width: 100%; }
 
+.button div {
+  background: #5e5d5d;
+  padding: 2% 4%;
+  margin: 2%; }
+  .button div a {
+    text-decoration: none;
+    color: #ffffff; }
+
 /*# sourceMappingURL=styles.css.map */
