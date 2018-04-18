@@ -7,9 +7,10 @@
        }
     </style>
     <div class="image-perso">
-        @foreach($event->characters as $c)
-        <img src="{{$c->url}}" >
-            @endforeach
+        <img src="{{$event->Character->url}}" >
+        <span>
+            {{$event->Character->name}}
+        </span>
     </div>
     <div class="dialogue">
         @if($event->dialog == false)

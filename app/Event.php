@@ -16,8 +16,8 @@ class Event extends Model
         return $this->belongsTo("App\Background", "idBackground");
     }
 
-    public function characters(){
-        return $this->hasMany("App\Character", "idEvent");
+    public function Character(){
+        return $this->belongsTo("App\Character", "idCharacter");
     }
 
     public function answers(){
