@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 17 Avril 2018 à 15:58
+-- Généré le :  Mer 18 Avril 2018 à 07:15
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -30,14 +30,14 @@ CREATE TABLE `answer` (
   `id` int(11) NOT NULL,
   `wording` varchar(255) NOT NULL,
   `idNextEvent` int(11) NOT NULL,
-  `idQuestion` int(11) NOT NULL
+  `idEvent` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `answer`
 --
 
-INSERT INTO `answer` (`id`, `wording`, `idNextEvent`, `idQuestion`) VALUES
+INSERT INTO `answer` (`id`, `wording`, `idNextEvent`, `idEvent`) VALUES
 (1, 'bla', 2, 1),
 (2, 'wording', 3, 1);
 
@@ -70,6 +70,14 @@ CREATE TABLE `chapter` (
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `chapter`
+--
+
+INSERT INTO `chapter` (`id`, `name`) VALUES
+(1, 'Chapitre 1'),
+(2, 'Chapitre 2');
+
 -- --------------------------------------------------------
 
 --
@@ -83,6 +91,13 @@ CREATE TABLE `character` (
   `idEvent` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `character`
+--
+
+INSERT INTO `character` (`id`, `name`, `url`, `idEvent`) VALUES
+(1, 'Mr.K', 'http://fotomelia.com/wp-content/uploads/2016/04/images-gratuites-creative-commons-cco-7-1560x1560.jpg', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -93,6 +108,7 @@ CREATE TABLE `event` (
   `id` int(11) NOT NULL,
   `text` text NOT NULL,
   `dialog` text NOT NULL,
+  `question` varchar(255) NOT NULL,
   `idChapter` int(11) NOT NULL,
   `idBackground` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -101,8 +117,9 @@ CREATE TABLE `event` (
 -- Contenu de la table `event`
 --
 
-INSERT INTO `event` (`id`, `text`, `dialog`, `idChapter`, `idBackground`) VALUES
-(1, 'tesssst', 'test', 1, 0);
+INSERT INTO `event` (`id`, `text`, `dialog`, `question`, `idChapter`, `idBackground`) VALUES
+(1, 'tesssst', 'test', '', 1, 1),
+(2, 'Etudiant vous cherchez un logement pas cher', '', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -139,25 +156,6 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `question`
---
-
-CREATE TABLE `question` (
-  `id` int(11) NOT NULL,
-  `wording` text NOT NULL,
-  `idEvent` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `question`
---
-
-INSERT INTO `question` (`id`, `wording`, `idEvent`) VALUES
-(1, 'Une question', 1);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `users`
 --
 
@@ -188,7 +186,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 --
 ALTER TABLE `answer`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idQuestion` (`idQuestion`);
+  ADD KEY `idQuestion` (`idEvent`);
 
 --
 -- Index pour la table `background`
@@ -230,13 +228,6 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Index pour la table `question`
---
-ALTER TABLE `question`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idEvent` (`idEvent`);
-
---
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
@@ -262,27 +253,22 @@ ALTER TABLE `background`
 -- AUTO_INCREMENT pour la table `chapter`
 --
 ALTER TABLE `chapter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `character`
 --
 ALTER TABLE `character`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT pour la table `question`
---
-ALTER TABLE `question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
@@ -296,19 +282,13 @@ ALTER TABLE `users`
 -- Contraintes pour la table `answer`
 --
 ALTER TABLE `answer`
-  ADD CONSTRAINT `answer_ibfk_1` FOREIGN KEY (`idQuestion`) REFERENCES `question` (`id`);
+  ADD CONSTRAINT `answer_ibfk_1` FOREIGN KEY (`idEvent`) REFERENCES `event` (`id`);
 
 --
 -- Contraintes pour la table `character`
 --
 ALTER TABLE `character`
   ADD CONSTRAINT `character_ibfk_1` FOREIGN KEY (`idEvent`) REFERENCES `event` (`id`);
-
---
--- Contraintes pour la table `question`
---
-ALTER TABLE `question`
-  ADD CONSTRAINT `question_ibfk_1` FOREIGN KEY (`idEvent`) REFERENCES `event` (`id`);
 
 --
 -- Contraintes pour la table `users`
