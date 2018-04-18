@@ -10,12 +10,10 @@
 
 
     @auth
-        <form action="#">
+        <a href="/event/{{Auth::user()->idEvent}}">Continuer le jeu</a>
+        <a href="/">Recommencer le jeu</a>
 
-    <input type="submit" id="continue" value="Continuer le jeu">
-    <input type="submit" id="restart" value="Recommencer le jeu">
 
-        </form>
     @endauth
 
     @guest

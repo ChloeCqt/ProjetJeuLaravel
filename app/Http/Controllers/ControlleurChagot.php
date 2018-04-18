@@ -10,7 +10,8 @@ class ControlleurChagot extends Controller
         return view('homeaffichage');
     }
 
-    public function deconnexion(){
-
+    public function background($idbackground){
+        $idbackground = Background::find($idbackground);
+        return view("background", ["id"=>$idbackground]);
     }
 }
