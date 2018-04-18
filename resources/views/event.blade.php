@@ -1,4 +1,5 @@
 @extends('layouts.app')
+$background = App\Background::with('event.idBackground')->get();
 
 @section('content')
     <style>
