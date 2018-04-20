@@ -6,6 +6,9 @@
            background-image:url('{{$event->Background->url}}');
        }
     </style>
+    <div>
+        {{$event->Chapter->name}}
+    </div>
     <div class="image-perso">
         @if($event->Character == false)
 
