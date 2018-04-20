@@ -3,6 +3,14 @@
 .button-game, .button-login{
   display: grid;
   grid-template-columns: 1fr;
+
+  a{
+    margin: 2% 3%;
+    padding: 2% 3%;
+    background: #1f648b;
+    text-align: center;
+  }
+
 }
 
 //event

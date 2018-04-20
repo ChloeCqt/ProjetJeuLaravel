@@ -1,6 +1,11 @@
 .button-game, .button-login {
   display: grid;
   grid-template-columns: 1fr; }
+  .button-game a, .button-login a {
+    margin: 2% 3%;
+    padding: 2% 3%;
+    background: #1f648b;
+    text-align: center; }
 
 .image-perso {
   width: 100%; }

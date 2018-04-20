@@ -5,7 +5,8 @@
     <div class="img-bg">
     </div>
     <div class="txt-bienvenue">
-        <h2>Bienvenue sur le jeu 3ème droite.</h2>
+        <h3>Bienvenue sur le jeu 3ème droite, le jeu rempli de suspens ...</h3>
+        <p>Etudiant, vous recherchez un appartement pour prendre votre indépendance mais vous êtes complétement fauché. La suite des évènements dépend de vos choix. A vous de bien choisir…</p>
     </div>
 
 
