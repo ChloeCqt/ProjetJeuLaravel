@@ -12,22 +12,13 @@
 </head>
 
 <body>
-<nav>
-    <a href="/"> Accueil</a>
 
-    @auth
-        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-        document.getElementById('logout-form').submit();">déconnexion</a>
-
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        {{ csrf_field() }}
-    </form>
-    @endauth
+{{--@include('includes.navigation')--}}
         <div class="container">
             @yield("content")
         </div>
 
-</nav>
+
 </body>
 
 

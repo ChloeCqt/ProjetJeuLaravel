@@ -9,5 +9,8 @@ class ControlleurChagot extends Controller
     public function homeaffichage(){
         return view('homeaffichage');
     }
+    public function navigation(){
+        return view('navigation');
+    }
     
 }

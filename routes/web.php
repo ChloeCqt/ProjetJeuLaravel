@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/homeaffichage', 'ControlleurChagot@homeaffichage');
-Route::get('/deconnexion', 'ControlleurChagot@deconnexion');
+Route::get('/navigation', 'ControlleurChagot@navigation');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/event/{id}','ControllerCaquant@event')->where("id",'[0-9]+');
