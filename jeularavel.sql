@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 18 Avril 2018 à 08:03
+-- Généré le :  Ven 20 Avril 2018 à 12:44
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -29,17 +29,24 @@ SET time_zone = "+00:00";
 CREATE TABLE `answer` (
   `id` int(11) NOT NULL,
   `wording` varchar(255) NOT NULL,
-  `idNextEvent` int(11) NOT NULL,
-  `idEvent` int(11) NOT NULL
+  `idEvent` int(11) NOT NULL,
+  `idNextEvent` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `answer`
 --
 
-INSERT INTO `answer` (`id`, `wording`, `idNextEvent`, `idEvent`) VALUES
-(1, 'bla', 2, 1),
-(2, 'wording', 3, 1);
+INSERT INTO `answer` (`id`, `wording`, `idEvent`, `idNextEvent`) VALUES
+(3, 'Vous trouvez une annonce pour la maison de vos rêves, avec un jardin et 100m² de surface habitable pour vous tout(e) seul(e) !', 1, 3),
+(4, 'Une annonce pour un appartement pas cher attire votre attention.', 1, 2),
+(5, 'Vous répondez que vous n\'etes pas son larbin !', 2, 4),
+(6, 'Continuer.', 5, 6),
+(7, 'Vous trouvez ça louche, mais vous acceptez quand même. Ce n\'est pas quelques corvée qui vont vous empêcher de vivre ici !', 2, 6),
+(8, 'Vous vous installez et rangez vos affaires puis vous vous endormez tranquillement.', 6, 16),
+(9, 'Vous décidez de faire le tour du propriétaire et de repérer ou se trouve cette cave interdite.', 6, 7),
+(10, 'Continuer', 7, 8),
+(11, 'Vous faites comme si de rien été et retournez tranquillement dans votre appartement en sifflotant.', 8, 16);
 
 -- --------------------------------------------------------
 
@@ -75,8 +82,11 @@ CREATE TABLE `chapter` (
 --
 
 INSERT INTO `chapter` (`id`, `name`) VALUES
-(1, 'Chapitre 1'),
-(2, 'Chapitre 2');
+(1, 'L\'arrivée'),
+(2, 'Un drôle de personnage'),
+(3, 'La cave'),
+(4, 'Coincé'),
+(5, 'Une voisine étrange');
 
 -- --------------------------------------------------------
 
@@ -87,16 +97,15 @@ INSERT INTO `chapter` (`id`, `name`) VALUES
 CREATE TABLE `character` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `idEvent` int(11) NOT NULL
+  `url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `character`
 --
 
-INSERT INTO `character` (`id`, `name`, `url`, `idEvent`) VALUES
-(1, 'Mr.K', 'http://fotomelia.com/wp-content/uploads/2016/04/images-gratuites-creative-commons-cco-7-1560x1560.jpg', 1);
+INSERT INTO `character` (`id`, `name`, `url`) VALUES
+(1, 'Mr.K', 'http://lohmann-stiftung.de/wp-content/uploads/2015/07/p-img-5-random-work.jpg');
 
 -- --------------------------------------------------------
 
@@ -110,16 +119,24 @@ CREATE TABLE `event` (
   `dialog` text NOT NULL,
   `question` varchar(255) NOT NULL,
   `idChapter` int(11) NOT NULL,
-  `idBackground` int(11) NOT NULL
+  `idBackground` int(11) NOT NULL,
+  `idCharacter` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `event`
 --
 
-INSERT INTO `event` (`id`, `text`, `dialog`, `question`, `idChapter`, `idBackground`) VALUES
-(1, 'tesssst', 'test', '', 1, 1),
-(2, 'Etudiant vous cherchez un logement pas cher', '', '', 1, 1);
+INSERT INTO `event` (`id`, `text`, `dialog`, `question`, `idChapter`, `idBackground`, `idCharacter`) VALUES
+(1, 'Vous êtes étudiant(e) et vous chercher un logement pas cher pour pouvoir mettre de l\'argent de côté.', '', 'Que choisissez-vous ?', 1, 1, 1),
+(2, 'Vous faites la connaissance de votre nouveau propriétaire : Mr.KIl parle vraiment bizarrement mais vous essayez de passer outre ce dialecte étrange et vous comprenez qu\'il vous loue gratuitement l\'appartement en échange de quelques heures de travail pour s\'occuper des tâches ménagères de la résidence', 'Bonjour, Mon plaisir de vous rencontrer', 'Que lui répondez-vous ?', 1, 1, 0),
+(3, 'C\'est bien sûr trop beau pour être vrai vous vous retrouvez vite avec plein de problèmes sur le dos (fuite d\'eau, problème d\'électricité, inondation). Vous devez quitter le logement et vous n\'avez pas le choix. Retour à la case départ.', '', '', 1, 1, NULL),
+(4, 'Vous réponds Mr.K. Il a l\'air un peu énervé.', 'Vous n\'avez qu\'a aller voir ailleurs si vous n\'etes pas content, c\'est à prendre ou a laisser', '', 2, 1, NULL),
+(5, 'Vous finissez par accepter sa contrepartie. De toute façon vous avez besoin de cet appartement.', '', '', 2, 1, NULL),
+(6, 'Mr. K vous fait visiter votre appartement, vous donnes différentes consignes plus ou moins utiles (comme par exemple comment bien ouvrir le volet) et vous donne vos horaires de travail. Il vous met en garde de ne SURTOUT PAS vous approcher de la cave derrière le local à poubelle. Puis il s\'en va en vous souhaitant une bonne soirée pretextant qu\'il est déjà tard (17h...).', 'Suivez-moi, je vais vous montrer votre appartement, il se trouve au troisième étage, première porte de droite.', 'Que faites-vous ?', 2, 1, NULL),
+(7, 'Vous faites le tour vous descendez les étages et regardez un peu les noms des personnes habitant ici, vous repérez vite l\'appartement de Mr. K au rez-de-chaussée et vous sortez voir un peu l\'exterieur.', '', '', 3, 1, NULL),
+(8, 'Vous vous dirigez vers le local de poubelles et vous voyez Mr.K entrer par un porte plus ou moins cachée derrière les poubelles (surement la fameuse cave). Il a l\'air très stressé.', '', '', 3, 1, NULL),
+(16, 'La nuit se passe et vous semblez faire des rêves agiter, le lendemain est difficile comme un lendemain de soirée.', '', '', 5, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -175,7 +192,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `idEvent`) VALUES
-(2, 'Chloé', 'chloecaquant@hotmail.com', '$2y$10$WrwhDf1uHtDJLxYeGyc.CejTGrK2lIAsz7GenQafSapfUYpu44CXy', 'bXwgyCqUdYDPwkkscwWPz7CdGWAYXrw8GWJXZvZrEgHWgdl36hV1kBvjAQC9', '2018-04-17 07:33:49', '2018-04-18 05:52:59', 2);
+(2, 'Chloé', 'chloecaquant@hotmail.com', '$2y$10$WrwhDf1uHtDJLxYeGyc.CejTGrK2lIAsz7GenQafSapfUYpu44CXy', 'bXwgyCqUdYDPwkkscwWPz7CdGWAYXrw8GWJXZvZrEgHWgdl36hV1kBvjAQC9', '2018-04-17 07:33:49', '2018-04-20 10:23:25', 1);
 
 --
 -- Index pour les tables exportées
@@ -204,8 +221,7 @@ ALTER TABLE `chapter`
 -- Index pour la table `character`
 --
 ALTER TABLE `character`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idEvent` (`idEvent`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `event`
@@ -213,7 +229,8 @@ ALTER TABLE `character`
 ALTER TABLE `event`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idChapter` (`idChapter`),
-  ADD KEY `idBackground` (`idBackground`);
+  ADD KEY `idBackground` (`idBackground`),
+  ADD KEY `idCharacter` (`idCharacter`);
 
 --
 -- Index pour la table `migrations`
@@ -243,7 +260,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `background`
 --
@@ -253,7 +270,7 @@ ALTER TABLE `background`
 -- AUTO_INCREMENT pour la table `chapter`
 --
 ALTER TABLE `chapter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `character`
 --
@@ -263,7 +280,7 @@ ALTER TABLE `character`
 -- AUTO_INCREMENT pour la table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT pour la table `migrations`
 --
@@ -285,10 +302,11 @@ ALTER TABLE `answer`
   ADD CONSTRAINT `answer_ibfk_1` FOREIGN KEY (`idEvent`) REFERENCES `event` (`id`);
 
 --
--- Contraintes pour la table `character`
+-- Contraintes pour la table `event`
 --
-ALTER TABLE `character`
-  ADD CONSTRAINT `character_ibfk_1` FOREIGN KEY (`idEvent`) REFERENCES `event` (`id`);
+ALTER TABLE `event`
+  ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`idChapter`) REFERENCES `chapter` (`id`),
+  ADD CONSTRAINT `event_ibfk_2` FOREIGN KEY (`idBackground`) REFERENCES `background` (`id`);
 
 --
 -- Contraintes pour la table `users`
