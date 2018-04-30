@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 23 Avril 2018 à 20:05
+-- Généré le :  Lun 30 Avril 2018 à 15:48
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -98,7 +98,13 @@ INSERT INTO `answer` (`id`, `wording`, `idEvent`, `idNextEvent`) VALUES
 (58, 'La laisser là et partir sans jamais revenir.', 44, 32),
 (59, 'La ligotter et l\'emmener dans la cave.', 44, 46),
 (60, 'Vous la tuez. Pour en finir une bonne fois pour toute.', 46, 51),
-(61, 'Vous l\'enfermez et gardez la clé avec vous.', 46, 47);
+(61, 'Vous l\'enfermez et gardez la clé avec vous.', 46, 47),
+(62, 'Continuer.', 45, 48),
+(63, 'Continuer.', 48, 49),
+(64, 'Vous l\'attaquez.', 49, 50),
+(65, 'Vous lui demander pourquoi elle ferme la porte à clé.', 49, 52),
+(66, 'Vous en finissez une bonne fois pour toute.', 50, 51),
+(67, 'Vous la ligottez là et vous partez sans jamais revenir.', 50, 32);
 
 -- --------------------------------------------------------
 
@@ -162,7 +168,12 @@ CREATE TABLE `character` (
 --
 
 INSERT INTO `character` (`id`, `name`, `url`) VALUES
-(1, 'Mr.K', 'http://lohmann-stiftung.de/wp-content/uploads/2015/07/p-img-5-random-work.jpg');
+(1, 'MR. K.', 'http://lohmann-stiftung.de/wp-content/uploads/2015/07/p-img-5-random-work.jpg'),
+(2, 'Mr. K', ''),
+(3, 'Mr. K', ''),
+(4, 'Mia', ''),
+(5, 'Mia', ''),
+(6, 'Mia', '');
 
 -- --------------------------------------------------------
 
@@ -185,12 +196,12 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`id`, `text`, `dialog`, `question`, `idChapter`, `idBackground`, `idCharacter`) VALUES
-(1, 'Vous êtes étudiant(e) et vous cherchez un logement pas cher pour pouvoir mettre de l\'argent de côté.', '', 'Que choisissez-vous ?', 1, 1, 1),
-(2, 'Vous faites la connaissance de votre nouveau propriétaire : Mr.K. Il parle vraiment bizarrement mais vous essayez de passer outre ce dialecte étrange et vous comprenez qu\'il vous loue gratuitement l\'appartement en échange de quelques heures de travail pour s\'occuper des tâches ménagères de la résidence', 'Bonjour, Mon plaisir de vous rencontrer', 'Que lui répondez-vous ?', 1, 1, NULL),
+(1, 'Vous êtes étudiant(e) et vous cherchez un logement pas cher pour pouvoir mettre de l\'argent de côté.', '', 'Que choisissez-vous ?', 1, 1, NULL),
+(2, 'Vous faites la connaissance de votre nouveau propriétaire : Mr.K. Il parle vraiment bizarrement mais vous essayez de passer outre ce dialecte étrange et vous comprenez qu\'il vous loue gratuitement l\'appartement en échange de quelques heures de travail pour s\'occuper des tâches ménagères de la résidence', 'Bonjour, Mon plaisir de vous rencontrer', 'Que lui répondez-vous ?', 1, 1, 1),
 (3, 'C\'est bien sûr trop beau pour être vrai vous vous retrouvez vite avec plein de problèmes sur le dos (fuite d\'eau, problème d\'électricité, inondation). Vous devez quitter le logement et vous n\'avez pas le choix. Retour à la case départ.', '', '', 1, 1, NULL),
-(4, 'Vous réponds Mr.K. Il a l\'air un peu énervé.', 'Vous n\'avez qu\'a aller voir ailleurs si vous n\'etes pas content, c\'est à prendre ou a laisser', '', 2, 1, NULL),
-(5, 'Vous finissez par accepter sa contrepartie. De toute façon vous avez besoin de cet appartement.', '', '', 2, 1, NULL),
-(6, 'Mr. K vous fait visiter votre appartement, vous donnes différentes consignes plus ou moins utiles (comme par exemple comment bien ouvrir le volet) et vous donne vos horaires de travail. Il vous met en garde de ne SURTOUT PAS vous approcher de la cave derrière le local à poubelle. Puis il s\'en va en vous souhaitant une bonne soirée pretextant qu\'il est déjà tard (17h...).', 'Suivez-moi, je vais vous montrer votre appartement, il se trouve au troisième étage, première porte de droite.', 'Que faites-vous ?', 2, 1, NULL),
+(4, 'Vous réponds Mr.K. Il a l\'air un peu énervé.', 'Vous n\'avez qu\'a aller voir ailleurs si vous n\'etes pas content, c\'est à prendre ou a laisser', '', 2, 1, 2),
+(5, 'Vous finissez par accepter sa contrepartie. De toute façon vous avez besoin de cet appartement.', '', '', 2, 1, 2),
+(6, 'Mr. K vous fait visiter votre appartement, vous donnes différentes consignes plus ou moins utiles (comme par exemple comment bien ouvrir le volet) et vous donne vos horaires de travail. Il vous met en garde de ne SURTOUT PAS vous approcher de la cave derrière le local à poubelle. Puis il s\'en va en vous souhaitant une bonne soirée pretextant qu\'il est déjà tard (17h...).', 'Suivez-moi, je vais vous montrer votre appartement, il se trouve au troisième étage, première porte de droite.', 'Que faites-vous ?', 2, 1, 1),
 (7, 'Vous faites le tour vous descendez les étages et regardez un peu les noms des personnes habitant ici, vous repérez vite l\'appartement de Mr. K au rez-de-chaussée et vous sortez voir un peu l\'exterieur.', '', '', 3, 1, NULL),
 (8, 'Vous vous dirigez vers le local de poubelles et vous voyez Mr.K entrer par un porte plus ou moins cachée derrière les poubelles (surement la fameuse cave). Il a l\'air très stressé.', '', '', 3, 1, NULL),
 (9, 'La porte est mal fermé, vous décidez d\'entrer dedans. Vous arrivez devant un escalier sombre qui a l\'air de continuer de descendre', '', 'Avancer dans la cave ?', 3, 1, NULL),
@@ -199,14 +210,14 @@ INSERT INTO `event` (`id`, `text`, `dialog`, `question`, `idChapter`, `idBackgro
 (12, 'Vous arrivez devant un escalier qui descend, il y a des traces qui ressemblent à des tâches de sang. ', '', 'Continuer ?', 3, 1, NULL),
 (13, 'Il y a l\'air d\'avoir un homme allongé dans le couloir.', '', 'Aller voir s\'il est toujours en vie ?', 3, 1, NULL),
 (14, 'Vous voyez un cadavre complètement desséché. Vous êtes horrifiés et commencez à faire marche arrière, mais vous croisez le chemin de Mr.K', '', '', 4, 1, NULL),
-(15, 'Mr.K vous arrête et vous ne sortirez jamais vivant de cette cave.', 'Ou croyez vous partir comme ça ?', '', 4, 1, NULL),
+(15, 'Mr.K vous arrête et vous ne sortirez jamais vivant de cette cave.', 'Ou croyez vous partir comme ça ?', '', 4, 1, 3),
 (16, 'La nuit se passe et vous semblez faire des rêves agités, le lendemain est difficile comme un lendemain de soirée.', '', '', 5, 1, NULL),
-(17, 'Le lendemain votre voisine vient frapper à la porte. Souriante elle se présente au nom de Mia. Elle vous demande si elle peut entrer.', 'Bonjour, je suis la voisine du dessous et la fille de Mr.K, est-ce que je peux rentrer pour qu\'on fasse plus ample connaissance ?', 'La laisser entrer ?', 5, 1, NULL),
-(18, 'Elle est très sympa, rigole à vos blagues et vous demande si elle peut repasser vous voir demain.', '', 'Accepter ?', 5, 1, NULL),
+(17, 'Le lendemain votre voisine vient frapper à la porte. Souriante elle se présente au nom de Mia. Elle vous demande si elle peut entrer.', 'Bonjour, je suis la voisine du dessous et la fille de Mr.K, est-ce que je peux rentrer pour qu\'on fasse plus ample connaissance ?', 'La laisser entrer ?', 5, 1, 4),
+(18, 'Elle est très sympa, rigole à vos blagues et vous demande si elle peut repasser vous voir demain.', '', 'Accepter ?', 5, 1, 4),
 (19, 'Le temps passe et vous commencez à passer de plus en plus de temps avec votre charmante voisine. Puis vous commencez à entamer une relation avec et les choses deviennent de plus en plus étrange.', '', '', 5, 1, NULL),
 (20, 'Vous commencez à ressentir des symptômes étrange de manque quand vous êtes loin d\'elle et vous l\'entendez vous appelez dans votre tête, vous ne pouvez résister à ses appels. Vous vous affaiblissez de jour en jour.', '', '', 5, 1, NULL),
 (21, 'Puis le jour vient ou elle vous emmène dans la cave. Vous n\'en ressortirez jamais vivant.', '', '', 5, 1, NULL),
-(22, 'Mia est sur le point de s\'en aller. Son comportement à complétement changer. Elle a l\'air de ne vraiment pas avoir apprécié votre réponse', '', '', 5, 1, NULL),
+(22, 'Mia est sur le point de s\'en aller. Son comportement à complétement changer. Elle a l\'air de ne vraiment pas avoir apprécié votre réponse.', '', '', 5, 1, 5),
 (23, 'Vous êtes maintenant seul(e) dans votre appartement.', '', '', 6, 1, NULL),
 (24, 'Vous découvrez alors le Thread Twitter 3eme droite. Vous faites tout de suite le rapprochement avec la première nuit bizarre que vous avez passé, Mr.K, Mia et la cave.', '', '', 6, 1, NULL),
 (25, 'Vous descendez dans la cave, de plus en plus profondément.', '', '', 7, 1, NULL),
@@ -214,28 +225,29 @@ INSERT INTO `event` (`id`, `text`, `dialog`, `question`, `idChapter`, `idBackgro
 (27, 'Vous entrer dans toutes les pièces à la recherche de survivant. Vous espérez pouvoir retrouver Damien, le rédacteur de l\'histoire sur Twitter, mais d\'un coup la porte de la pièce dans laquelle vous vous trouver se referme derrière vous. Vous ne sortirez jamais vivant de cette cave.', '', '', 6, 1, NULL),
 (28, 'La police vous rit au nez et vous demande d\'arrêter vos canulars et de les appeler pour des raisons valables.', '', '', 6, 1, NULL),
 (29, 'Vos valises sont prêtes et vous ne laissez aucune trace de votre passage dans cet appartement.', '', '', 8, 1, NULL),
-(30, 'C\'est Mr.K Il vous a vu partir et vous interpelle depuis l\'escalier.', 'Ou est-ce que vous allez ?', '', 8, 1, NULL),
+(30, 'C\'est Mr.K Il vous a vu partir et vous interpelle depuis l\'escalier.', 'Ou est-ce que vous allez ?', '', 8, 1, 2),
 (31, 'Vous prenez le premier train et le premier avion que vous avez sous la main. Tous les endroits sont bons à prendre tant que c\'est loin de cet endroit maudit.', '', '', 8, 1, NULL),
 (32, 'Vous vivrez alors dans la paranoïa pendant des année en pensant vous faire traquer par Mia et Mr.K', '', '', 8, 1, NULL),
-(33, 'Fou de rage, Mr.K essaie de vous attrapez.', 'Vous ne vous en sortirez pas comme ça !', '', 8, 1, NULL),
-(34, 'Mr.K se ressaisit et hésite à accepter votre proposition.', '', '', 8, 1, NULL),
+(33, 'Fou de rage, Mr.K essaie de vous attrapez.', 'Vous ne vous en sortirez pas comme ça !', '', 8, 1, 3),
+(34, 'Mr.K se ressaisit et hésite à accepter votre proposition.', '', '', 8, 1, 1),
 (35, 'Mr.K et vous prenez le premier avion qui vient et vous partez vers les Îles Canari. Vous vivrez heureux ensemble en l\'aidant à ne pas succomber à l\'appel de Mia.', '', '', 8, 1, NULL),
-(36, 'Elle insiste, elle a l\'air d\'être vraiment contrariée.', '', '', 5, 1, NULL),
-(37, 'Elle vous regarde comme si elle allait vous tuer puis s\'en va.', 'Tu le regretteras...', '', 5, 1, NULL),
+(36, 'Elle insiste, elle a l\'air d\'être vraiment contrariée.', '', '', 5, 1, 5),
+(37, 'Elle vous regarde comme si elle allait vous tuer puis s\'en va.', 'Tu le regretteras...', '', 5, 1, 5),
 (38, 'Vous finirez vos études avec succès après avoir quitter les lieux et vous vivrez une vie heureuse en gardant à l\'esprit que vous ne saurez jamais l\'histoire qui se cache derrière l\'appartement au 3eme étage à droite...', '', '', 9, 1, NULL),
 (39, 'Attention, Mia vous semble très manipulatrice et dangereuse, il faut réfléchir et définir une stratégie.', '', '', 10, 1, NULL),
 (40, 'Vous attendez plusieurs jours et vous élaborez un plan pour piéger Mia. Pendant ce temps vous restez cordiale avec Mia et Mr.K pour qu\'il ne se doute de rien. Un jour, Mia vient frapper à votre porte.', '', '', 10, 1, NULL),
 (41, 'Les jours passent et vous sympathisez avec Mr.K, il se méfie au début mais commence a bien vous apprécier.', '', '', 10, 1, NULL),
-(42, 'Finalement vous le prenez en pitié, vous lui expliquez que vous savez tout et que vous pouvez l\'aider à s\'échapper. Il hésite un instant puis accepte de partir avec vous.', '', '', 10, 1, NULL),
-(43, 'A tout coup elle veut vous piéger. ', '', 'Que décidez-vous de faire ?', 10, 1, NULL),
-(44, 'Elle se jette alors à votre cou comme une folle dingue. Vous vous débattez et finissez par l’assommer.', '', 'Que décidez-vous de faire ?', 10, 1, NULL),
+(42, 'Finalement vous le prenez en pitié, vous lui expliquez que vous savez tout et que vous pouvez l\'aider à s\'échapper. Il hésite un instant puis accepte de partir avec vous.', '', '', 10, 1, 1),
+(43, 'A tout coup elle veut vous piéger. ', '', 'Que décidez-vous de faire ?', 10, 1, 4),
+(44, 'Elle se jette alors à votre cou comme une folle dingue. Vous vous débattez et finissez par l’assommer.', '', 'Que décidez-vous de faire ?', 10, 1, 6),
 (45, 'Vous la suivez (heureusement depuis le jour ou vous savez vous garder toujours une arme sur vous) et vous aller dans la cave.', '', '', 10, 1, NULL),
 (46, 'Une fois arriver dans la cave vous vous retrouvez dans une pièce que vous pouvez fermer à clé.', '', ' Que faites-vous ?', 10, 1, NULL),
 (47, 'Vous finirez vos études avec succès et préviendrez tous les locataires de l\'immeuble ce qu\'il peuvent risquer en venant habiter ici, tout en gardant un oeil attentif à Mia. Puis vous partirez en vous assurant que Mia ne pourra plus faire de mal à qui que ce soit..', '', '', 10, 1, NULL),
-(48, 'Elle vous emmène de plus en plus profond dans cette cave, comme si elle connaissait déjà les lieux...', 'Suis-moi, je crois qu\'il est parti par là la dernière fois !', '', 10, 1, NULL),
+(48, 'Elle vous emmène de plus en plus profond dans cette cave, comme si elle connaissait déjà les lieux...', 'Suis-moi, je crois qu\'il est parti par là la dernière fois !', '', 10, 1, 4),
 (49, 'Vous arrivez dans une pièce sombre et elle ferme la porte à clé.', '', 'Que faites-vous ?', 10, 1, NULL),
 (50, 'Vous réussisez à l\'assomer avant qu\'elle se retourne. ', '', 'Que faites-vous ?', 10, 1, NULL),
-(51, 'Une fois le travail terminé, vous faites vos bagages et vous vous en allez. Vous allez passer votre vie à traquer ces personnes surnaturelles. On vous appellera "Le Chasseur".', '', '', 10, 1, NULL);
+(51, 'Une fois le travail terminé, vous faites vos bagages et vous vous en allez. Vous allez passer votre vie à traquer ces personnes surnaturelles. On vous appellera "Le Chasseur".', '', '', 10, 1, NULL),
+(52, 'Elle se retourne et vous attaque, vous n\'avez pas le temps de sortir votre arme que vous gardiez toujours sur vous ! Vous ne réussirez pas à sortir vivant de cette cave.', 'Groaaaaaaaah !', '', 10, 1, 6);
 
 -- --------------------------------------------------------
 
@@ -361,7 +373,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT pour la table `background`
 --
@@ -376,12 +388,12 @@ ALTER TABLE `chapter`
 -- AUTO_INCREMENT pour la table `character`
 --
 ALTER TABLE `character`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pour la table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT pour la table `migrations`
 --
