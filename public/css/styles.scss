@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One');
+//font-family: 'Pathway Gothic One', sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Hind:400,700');
+//font-family: 'Hind', sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:700');
+//font-family: 'PT Sans', sans-serif;
+
 //background
 
 body{
@@ -12,11 +21,31 @@ body{
   left: 0;
   right: 0;
   z-index: 9999;
+  width: 100%;
+  height: 100%;
+  .texte{
+    font-family: 'Hind', sans-serif;
+  }
+}
+
+.background{
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-position: 50% 50%;
+  max-height: 800px;
+  height: 100%;
+  z-index: -1;
+  filter: opacity(45%);
 }
 
 .chapter-name{
   h2{
     text-align: center;
+    font-family: 'Pathway Gothic One', sans-serif;
   }
 }
 
@@ -60,15 +89,20 @@ body{
   span{
     text-align: center;
   }
+  h4{
+    font-family: 'Hind', sans-serif;
+  }
 }
 
 
 .button{
   div{
-    background: #999999 ;
+    background: #9a1b00 ;
     padding: 4%;
     margin: 2%;
     border-radius: 2pt;
+    font-family: 'Hind', sans-serif;
+    font-weight: 700;
     a{
       text-decoration: none;
       color: #ffffff!important;
@@ -97,7 +131,10 @@ body{
     align-items: center;
     justify-content: center;
     p{
+      font-family: 'Pathway Gothic One', sans-serif;
       font-size: 110%;
+      font-style: italic;
+
     }
   }
 }
@@ -105,6 +142,7 @@ body{
 .question{
   h4{
     margin: 6% 2%;
+    font-family: 'Hind', sans-serif;
   }
 }
 
