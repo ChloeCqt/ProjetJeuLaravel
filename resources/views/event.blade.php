@@ -51,5 +51,13 @@
         @endforeach
     </div>
 
+    @if($event->fin == 1)
+        <div class="">
+            <a href="/event/1">Recommencer le jeu</a>
+            <a href="/" onClick="{{Auth::user()->idEvent = NULL}}">Revenir à la page d'accueil</a>
+
+        </div>
+    @endif
+
 
 @endsection

@@ -19,6 +19,13 @@
                 <a href="/event/{{Auth::user()->idEvent}}">Commencer le jeu</a>
             @endif
         </div>
+
+
+
+      {{--  @if(Auth::user()->idEvent == 15 || 21 || 27 || 32 || 35 ||38|| 47|| 51|| 52 )
+            Auth::user()->idEvent = $e->id;
+            Auth::user()->save();
+            @endif--}}
     @endauth
 
     @guest
