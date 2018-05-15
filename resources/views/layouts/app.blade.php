@@ -13,7 +13,7 @@
 
 <body>
 
-{{--@include('includes.navigation')--}}
+@include('navigation')
         <div class="container">
             @yield("content")
         </div>

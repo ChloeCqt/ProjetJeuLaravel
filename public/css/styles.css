@@ -1,6 +1,26 @@
+body {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1; }
+
+.container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 9999; }
+
+.chapter-name h2 {
+  text-align: center; }
+
 .menu {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.33);
+  padding: 5%;
+  background: #dfdfdf; }
+  .menu a {
+    color: #636b6f; }
 
 .button-game, .button-login {
   display: grid;
@@ -12,13 +32,16 @@
     text-align: center; }
 
 .image-perso {
-  width: 100%; }
+  width: 100%;
+  text-align: center; }
   .image-perso img {
     width: 100%; }
+  .image-perso span {
+    text-align: center; }
 
 .button div {
   background: #999999;
-  padding: 2% 4%;
+  padding: 4%;
   margin: 2%;
   border-radius: 2pt; }
   .button div a {
@@ -28,9 +51,19 @@
   text-decoration: none;
   color: #ffffff !important; }
 
-.container {
-  position: absolute;
-  top: 45%;
-  transform: translate(0, -50%); }
+.character-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; }
+  .character-container div {
+    padding: 1% 2%; }
+  .character-container .dialogue {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .character-container .dialogue p {
+      font-size: 110%; }
+
+.question h4 {
+  margin: 6% 2%; }
 
 /*# sourceMappingURL=styles.css.map */

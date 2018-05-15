@@ -2,29 +2,34 @@
 
 @section('content')
     <style>
-       body{
+       .background{
            background-image:url('{{$event->Background->url}}');
        }
     </style>
-    <div>
-        {{$event->Chapter->name}}
+    <div class="background"></div>
+    <div class="chapter-name">
+        <h2>{{$event->Chapter->name}}</h2>
     </div>
-    <div class="image-perso">
-        @if($event->Character == false)
 
-        @else
-        <img src="{{$event->Character->url}}" >
-        <span>
-            {{$event->Character->name}}
-        </span>
-        @endif
-    </div>
-    <div class="dialogue">
-        @if($event->dialog == false)
+    <div class="character-container">
+        <div class="dialogue">
+            @if($event->dialog == false)
 
-        @else
-           " {{$event->dialog}} "
-        @endif
+            @else
+                <p> " {{$event->dialog}} "</p>
+            @endif
+        </div>
+        <div class="image-perso">
+            @if($event->Character == false)
+
+            @else
+                <h4>
+                {{$event->Character->name}}
+            </h4>
+                <img src="{{$event->Character->url}}" >
+
+            @endif
+        </div>
     </div>
     <div class="texte">
         {{$event->text}}
@@ -33,7 +38,7 @@
         @if($event->question == false)
 
         @else
-            {{$event->question}}
+            <h4>{{$event->question}}</h4>
         @endif
     </div>
     <div class="button">
