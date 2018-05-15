@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 30 Avril 2018 à 15:48
+-- Généré le :  Mar 15 Mai 2018 à 10:02
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -41,7 +41,7 @@ INSERT INTO `answer` (`id`, `wording`, `idEvent`, `idNextEvent`) VALUES
 (1, 'Vous trouvez une annonce pour la maison de vos rêves, avec un jardin et 100m² de surface habitable pour vous tout(e) seul(e) !', 1, 3),
 (2, 'Une annonce pour un appartement pas cher attire votre attention.', 1, 2),
 (3, 'Vous répondez que vous n\'êtes pas son larbin !', 2, 4),
-(4, 'Continuer.', 5, 6),
+(4, 'Vous finissez par accepter sa contrepartie. De toute façon vous avez besoin de cet appartement.', 4, 6),
 (5, 'Vous trouvez ça louche, mais vous acceptez quand même. Ce n\'est pas quelques corvée qui vont vous empêcher de vivre ici !', 2, 6),
 (6, 'Vous vous installez et rangez vos affaires puis vous vous endormez tranquillement.', 6, 16),
 (7, 'Vous décidez de faire le tour du propriétaire et de repérer ou se trouve cette cave interdite.', 6, 7),
@@ -122,7 +122,19 @@ CREATE TABLE `background` (
 --
 
 INSERT INTO `background` (`id`, `url`) VALUES
-(1, 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Fond_blanc.svg/1280px-Fond_blanc.svg.png');
+(1, 'https://zupimages.net/up/18/20/uv6m.jpg'),
+(2, 'https://zupimages.net/up/18/20/4snf.jpg'),
+(3, 'https://zupimages.net/up/18/20/bxm3.jpg'),
+(4, 'https://a0.muscache.com/im/pictures/e40e4e9b-1cce-44e5-b270-a58d01ebe2a4.jpg?aki_policy=x_large'),
+(5, 'https://www.publicdomainpictures.net/pictures/180000/velka/old-wood-wall-and-door-background.jpg'),
+(6, 'https://zupimages.net/up/18/20/ouyq.jpg'),
+(7, 'https://zupimages.net/up/18/20/1zpl.jpg'),
+(8, 'https://zupimages.net/up/18/20/koa5.jpg'),
+(9, 'https://zupimages.net/up/18/20/8cy4.jpg'),
+(10, 'https://zupimages.net/up/18/20/pe6o.jpg'),
+(11, 'https://zupimages.net/up/18/20/b7g1.jpg'),
+(12, 'http://www.marseille-nettoyage.com/uploads/files/nettoyage-de-coproprietes-56.JPG'),
+(13, 'http://footage.framepool.com/shotimg/qf/895753568-sion-town-hall-tower-clock-face-church-clock.jpg');
 
 -- --------------------------------------------------------
 
@@ -197,26 +209,26 @@ CREATE TABLE `event` (
 
 INSERT INTO `event` (`id`, `text`, `dialog`, `question`, `idChapter`, `idBackground`, `idCharacter`) VALUES
 (1, 'Vous êtes étudiant(e) et vous cherchez un logement pas cher pour pouvoir mettre de l\'argent de côté.', '', 'Que choisissez-vous ?', 1, 1, NULL),
-(2, 'Vous faites la connaissance de votre nouveau propriétaire : Mr.K. Il parle vraiment bizarrement mais vous essayez de passer outre ce dialecte étrange et vous comprenez qu\'il vous loue gratuitement l\'appartement en échange de quelques heures de travail pour s\'occuper des tâches ménagères de la résidence', 'Bonjour, Mon plaisir de vous rencontrer', 'Que lui répondez-vous ?', 1, 1, 1),
-(3, 'C\'est bien sûr trop beau pour être vrai vous vous retrouvez vite avec plein de problèmes sur le dos (fuite d\'eau, problème d\'électricité, inondation). Vous devez quitter le logement et vous n\'avez pas le choix. Retour à la case départ.', '', '', 1, 1, NULL),
-(4, 'Vous réponds Mr.K. Il a l\'air un peu énervé.', 'Vous n\'avez qu\'a aller voir ailleurs si vous n\'etes pas content, c\'est à prendre ou a laisser', '', 2, 1, 2),
-(5, 'Vous finissez par accepter sa contrepartie. De toute façon vous avez besoin de cet appartement.', '', '', 2, 1, 2),
-(6, 'Mr. K vous fait visiter votre appartement, vous donnes différentes consignes plus ou moins utiles (comme par exemple comment bien ouvrir le volet) et vous donne vos horaires de travail. Il vous met en garde de ne SURTOUT PAS vous approcher de la cave derrière le local à poubelle. Puis il s\'en va en vous souhaitant une bonne soirée pretextant qu\'il est déjà tard (17h...).', 'Suivez-moi, je vais vous montrer votre appartement, il se trouve au troisième étage, première porte de droite.', 'Que faites-vous ?', 2, 1, 1),
-(7, 'Vous faites le tour vous descendez les étages et regardez un peu les noms des personnes habitant ici, vous repérez vite l\'appartement de Mr. K au rez-de-chaussée et vous sortez voir un peu l\'exterieur.', '', '', 3, 1, NULL),
-(8, 'Vous vous dirigez vers le local de poubelles et vous voyez Mr.K entrer par un porte plus ou moins cachée derrière les poubelles (surement la fameuse cave). Il a l\'air très stressé.', '', '', 3, 1, NULL),
-(9, 'La porte est mal fermé, vous décidez d\'entrer dedans. Vous arrivez devant un escalier sombre qui a l\'air de continuer de descendre', '', 'Avancer dans la cave ?', 3, 1, NULL),
-(10, 'La cave a l\'air très grande et profonde, il y a beaucoup de porte autour de vous. ', '', 'Que faites-vous ?', 3, 1, NULL),
-(11, 'Vous vous enfoncez plus profondemment dans la cave.', '', '', 3, 1, NULL),
-(12, 'Vous arrivez devant un escalier qui descend, il y a des traces qui ressemblent à des tâches de sang. ', '', 'Continuer ?', 3, 1, NULL),
-(13, 'Il y a l\'air d\'avoir un homme allongé dans le couloir.', '', 'Aller voir s\'il est toujours en vie ?', 3, 1, NULL),
-(14, 'Vous voyez un cadavre complètement desséché. Vous êtes horrifiés et commencez à faire marche arrière, mais vous croisez le chemin de Mr.K', '', '', 4, 1, NULL),
-(15, 'Mr.K vous arrête et vous ne sortirez jamais vivant de cette cave.', 'Ou croyez vous partir comme ça ?', '', 4, 1, 3),
-(16, 'La nuit se passe et vous semblez faire des rêves agités, le lendemain est difficile comme un lendemain de soirée.', '', '', 5, 1, NULL),
-(17, 'Le lendemain votre voisine vient frapper à la porte. Souriante elle se présente au nom de Mia. Elle vous demande si elle peut entrer.', 'Bonjour, je suis la voisine du dessous et la fille de Mr.K, est-ce que je peux rentrer pour qu\'on fasse plus ample connaissance ?', 'La laisser entrer ?', 5, 1, 4),
-(18, 'Elle est très sympa, rigole à vos blagues et vous demande si elle peut repasser vous voir demain.', '', 'Accepter ?', 5, 1, 4),
-(19, 'Le temps passe et vous commencez à passer de plus en plus de temps avec votre charmante voisine. Puis vous commencez à entamer une relation avec et les choses deviennent de plus en plus étrange.', '', '', 5, 1, NULL),
-(20, 'Vous commencez à ressentir des symptômes étrange de manque quand vous êtes loin d\'elle et vous l\'entendez vous appelez dans votre tête, vous ne pouvez résister à ses appels. Vous vous affaiblissez de jour en jour.', '', '', 5, 1, NULL),
-(21, 'Puis le jour vient ou elle vous emmène dans la cave. Vous n\'en ressortirez jamais vivant.', '', '', 5, 1, NULL),
+(2, 'Vous faites la connaissance de votre nouveau propriétaire : Mr.K. Il parle vraiment bizarrement mais vous essayez de passer outre ce dialecte étrange et vous comprenez qu\'il vous loue gratuitement l\'appartement en échange de quelques heures de travail pour s\'occuper des tâches ménagères de la résidence', 'Bonjour, Mon plaisir de vous rencontrer', 'Que lui répondez-vous ?', 1, 3, 1),
+(3, 'C\'est bien sûr trop beau pour être vrai vous vous retrouvez vite avec plein de problèmes sur le dos (fuite d\'eau, problème d\'électricité, inondation). Vous devez quitter le logement et vous n\'avez pas le choix. Retour à la case départ.', '', '', 1, 2, NULL),
+(4, 'Vous réponds Mr.K. Il a l\'air un peu énervé.', 'Vous n\'avez qu\'a aller voir ailleurs si vous n\'etes pas content, c\'est à prendre ou a laisser', '', 2, 3, 2),
+(5, 'Vous finissez par accepter sa contrepartie. De toute façon vous avez besoin de cet appartement.', '', '', 2, 3, 2),
+(6, 'Mr. K vous fait visiter votre appartement, vous donnes différentes consignes plus ou moins utiles (comme par exemple comment bien ouvrir le volet) et vous donne vos horaires de travail. Il vous met en garde de ne SURTOUT PAS vous approcher de la cave derrière le local à poubelle. Puis il s\'en va en vous souhaitant une bonne soirée pretextant qu\'il est déjà tard (17h...).', 'Suivez-moi, je vais vous montrer votre appartement, il se trouve au troisième étage, première porte de droite.', 'Que faites-vous ?', 2, 4, 1),
+(7, 'Vous faites le tour vous descendez les étages et regardez un peu les noms des personnes habitant ici, vous repérez vite l\'appartement de Mr. K au rez-de-chaussée et vous sortez voir un peu l\'exterieur.', '', '', 3, 3, NULL),
+(8, 'Vous vous dirigez vers le local de poubelles et vous voyez Mr.K entrer par un porte plus ou moins cachée derrière les poubelles (surement la fameuse cave). Il a l\'air très stressé.', '', '', 3, 5, NULL),
+(9, 'La porte est mal fermé, vous décidez d\'entrer dedans. Vous arrivez devant un escalier sombre qui a l\'air de continuer de descendre', '', 'Avancer dans la cave ?', 3, 6, NULL),
+(10, 'La cave a l\'air très grande et profonde, il y a beaucoup de porte autour de vous. ', '', 'Que faites-vous ?', 3, 7, NULL),
+(11, 'Vous vous enfoncez plus profondemment dans la cave.', '', '', 3, 8, NULL),
+(12, 'Vous arrivez devant un escalier qui descend, il y a des traces qui ressemblent à des tâches de sang. ', '', 'Continuer ?', 3, 9, NULL),
+(13, 'Il y a l\'air d\'avoir un homme allongé dans le couloir.', '', 'Aller voir s\'il est toujours en vie ?', 3, 10, NULL),
+(14, 'Vous voyez un cadavre complètement desséché. Vous êtes horrifiés et commencez à faire marche arrière, mais vous croisez le chemin de Mr.K', '', '', 4, 11, NULL),
+(15, 'Mr.K vous arrête et vous ne sortirez jamais vivant de cette cave.', 'Ou croyez vous partir comme ça ?', '', 4, 10, 3),
+(16, 'La nuit se passe et vous semblez faire des rêves agités, le lendemain est difficile comme un lendemain de soirée.', '', '', 5, 4, NULL),
+(17, 'Le lendemain votre voisine vient frapper à la porte. Souriante elle se présente au nom de Mia. Elle vous demande si elle peut entrer.', 'Bonjour, je suis la voisine du dessous et la fille de Mr.K, est-ce que je peux rentrer pour qu\'on fasse plus ample connaissance ?', 'La laisser entrer ?', 5, 12, 4),
+(18, 'Elle est très sympa, rigole à vos blagues et vous demande si elle peut repasser vous voir demain.', 'Je peux revenir demain ? ', 'Accepter ?', 5, 4, 4),
+(19, 'Le temps passe et vous commencez à passer de plus en plus de temps avec votre charmante voisine. Puis vous commencez à entamer une relation avec et les choses deviennent de plus en plus étrange.', '', '', 5, 13, NULL),
+(20, 'Vous commencez à ressentir des symptômes étrange de manque quand vous êtes loin d\'elle et vous l\'entendez vous appelez dans votre tête, vous ne pouvez résister à ses appels. Vous vous affaiblissez de jour en jour.', '', '', 5, 4, NULL),
+(21, 'Puis le jour vient ou elle vous emmène dans la cave. Vous n\'en ressortirez jamais vivant.', '', '', 5, 5, NULL),
 (22, 'Mia est sur le point de s\'en aller. Son comportement à complétement changer. Elle a l\'air de ne vraiment pas avoir apprécié votre réponse.', '', '', 5, 1, 5),
 (23, 'Vous êtes maintenant seul(e) dans votre appartement.', '', '', 6, 1, NULL),
 (24, 'Vous découvrez alors le Thread Twitter 3eme droite. Vous faites tout de suite le rapprochement avec la première nuit bizarre que vous avez passé, Mr.K, Mia et la cave.', '', '', 6, 1, NULL),
@@ -303,9 +315,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `idEvent`) VALUES
-(2, 'Chloé', 'chloecaquant@hotmail.com', '$2y$10$WrwhDf1uHtDJLxYeGyc.CejTGrK2lIAsz7GenQafSapfUYpu44CXy', 'mp54k7OKnRaGeKMRQNbgz0d4uQhIabo5ux2SaofO8f0pCnbhkbMHjNCBs3Qa', '2018-04-17 07:33:49', '2018-04-22 19:00:00', 2),
 (3, 'utilisateur1', 'utilisateur1@gmail.com', '$2y$10$ZbsnANMXuONUnYWbI.9KF.GdNbsKjmnTyWmtaWaPaATj34z39kkh2', NULL, '2018-04-20 11:01:19', '2018-04-20 11:01:19', NULL),
-(4, 'melanie', 'melanie@melanie.com', '$2y$10$vImA5JpArTxJnSDAkG2cweb5B4WyRbCST5sMIgjvKUpegTjhypOby', NULL, '2018-04-21 18:42:51', '2018-04-21 18:51:21', 9);
+(4, 'melanie', 'melanie@melanie.com', '$2y$10$vImA5JpArTxJnSDAkG2cweb5B4WyRbCST5sMIgjvKUpegTjhypOby', NULL, '2018-04-21 18:42:51', '2018-04-21 18:51:21', 9),
+(5, 'Chloé', 'chloecaquant@hotmail.com', '$2y$10$rnsN499m34h9Mvhqq7Myye9lmiHkhhiOBoXWWAUrKN5lXCi6SSQze', NULL, '2018-05-15 04:54:32', '2018-05-15 07:57:48', 4);
 
 --
 -- Index pour les tables exportées
@@ -373,12 +385,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 --
 -- AUTO_INCREMENT pour la table `background`
 --
 ALTER TABLE `background`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT pour la table `chapter`
 --
@@ -388,7 +400,7 @@ ALTER TABLE `chapter`
 -- AUTO_INCREMENT pour la table `character`
 --
 ALTER TABLE `character`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `event`
 --
@@ -403,7 +415,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Contraintes pour les tables exportées
 --
