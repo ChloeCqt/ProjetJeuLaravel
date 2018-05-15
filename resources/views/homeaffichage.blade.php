@@ -12,8 +12,12 @@
 
     @auth
         <div class="button-game">
-            <a href="/event/{{Auth::user()->idEvent}}">Continuer le jeu</a>
-            <a href="/event/1">Recommencer le jeu</a>
+            @if(Auth::user()->idEvent != NULL)
+                <a href="/event/{{Auth::user()->idEvent}}">Continuer le jeu</a>
+                <a href="/event/1">Recommencer le jeu</a>
+            @else
+                <a href="/event/{{Auth::user()->idEvent}}">Commencer le jeu</a>
+            @endif
         </div>
     @endauth
 
