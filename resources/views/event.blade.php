@@ -52,7 +52,10 @@
     </div>
 
     @if($event->fin == 1)
-        <div class="">
+        <div class="the-end">
+            THE END.
+        </div>
+        <div class="end">
             <a href="/event/1">Recommencer le jeu</a>
             <a href="/" onClick="{{Auth::user()->idEvent = NULL}}">Revenir à la page d'accueil</a>
 
