@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 15 Mai 2018 à 11:49
+-- Généré le :  Mer 16 Mai 2018 à 18:38
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -185,12 +185,12 @@ CREATE TABLE `character` (
 --
 
 INSERT INTO `character` (`id`, `name`, `url`) VALUES
-(1, 'MR. K.', 'http://lohmann-stiftung.de/wp-content/uploads/2015/07/p-img-5-random-work.jpg'),
-(2, 'Mr. K', ''),
-(3, 'Mr. K', ''),
-(4, 'Mia', ''),
-(5, 'Mia', ''),
-(6, 'Mia', '');
+(1, 'MR. K.', 'https://zupimages.net/up/18/20/4gwd.png'),
+(2, 'Mr. K', 'https://zupimages.net/up/18/20/rbfj.png'),
+(3, 'Mr. K', 'https://zupimages.net/up/18/20/y3a0.png'),
+(4, 'Mia', 'https://www.zupimages.net/up/18/20/ekr0.png'),
+(5, 'Mia', 'https://zupimages.net/up/18/20/p51b.png'),
+(6, 'Mia', 'https://zupimages.net/up/18/20/2cgp.png');
 
 -- --------------------------------------------------------
 
@@ -390,7 +390,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT pour la table `background`
 --
