@@ -1,17 +1,22 @@
-/*
-Error: Invalid CSS after "    padding: 10px": expected "{", was ";"
-        on line 162 of styles.scss
+@import url("https://fonts.googleapis.com/css?family=Pathway+Gothic+One");
+@import url("https://fonts.googleapis.com/css?family=Hind:400,600");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:700");
+body {
+  position: relative;
+  left: 0;
+  right: 0;
+  z-index: 1; }
 
-157: 
-158: .recommencer{
-159:   text-align: center;
-160:   margin-bottom: 20px;
-161:   a{npmnpm
-162:     padding: 10px;
-163:     background-color: #970a08;
-164:     color: #ffffff;
-165:   }
-166: }
+.container {
+  position: inherit;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%; }
+  .container .texte {
+    font-family: 'Hind', sans-serif;
+    padding: 6%; }
 
 .background {
   background-repeat: no-repeat;

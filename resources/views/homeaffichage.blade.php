@@ -12,9 +12,7 @@
 
     @auth
         <div class="button-game">
-            {{--@if($event->fin == 1)--}}
-                {{--{{Auth::user()->idEvent == NULL}}--}}
-                {{--@endif--}}
+
             @if(Auth::user()->idEvent != NULL)
                 <a href="/event/{{Auth::user()->idEvent}}">Continuer le jeu</a>
                 <a href="/event/1">Recommencer le jeu</a>
